@@ -1,17 +1,17 @@
 # 📄 PPTX to Markdown Converter
 
-교육 제안서 및 커리큘럼이 담긴 PPTX 파일들을 대량으로 분석하여, LLM 및 RAG(Retrieval-Augmented Generation) 시스템에 최적화된 **Clean Markdown (.md)** 파일로 자동 변환하는 파이프라인 스크립트입니다.
+교육 제안서 및 커리큘럼이 담긴 PPTX 파일들을 대량으로 분석하여, LLM 및 RAG(Retrieval-Augmented Generation) 시스템에 최적화된 Clean Markdown (.md) 파일로 자동 변환하는 파이프라인 스크립트입니다.
 
 
 
 ## ✨ 주요 기능 (Features)
 
-1. **파일명 정제 자동화 (`rename_pptx.py`)**
+1. **파일명 정제 자동화 (`clean_pptx_names.py`)**
    - 불규칙한 제안서 파일명에서 불필요한 단어(날짜, 버전, 사내 용어 등)를 일괄 제거합니다.
-   - **macOS 한글 깨짐 방지**: 자음/모음이 분리된 NFD 포맷을 정상적인 NFC 포맷으로 자동 변환하여 정규표현식 필터링이 완벽하게 작동하게 합니다.
+   - macOS 한글 깨짐 방지: 자음/모음이 분리된 NFD 포맷을 정상적인 NFC 포맷으로 자동 변환하여 정규표현식 필터링이 완벽하게 작동하게 합니다.
 
-2. **스마트 PPTX 텍스트 추출 (`pptx_to_md.py`)**
-   - **숨기기 처리된 슬라이드 완벽 차단**: `is_hidden` 속성을 XML 레벨에서 파악하여 불필요한 예비용/과거 장표를 분석에서 제외합니다.
+2. **스마트 PPTX 텍스트 추출 (`extract_curriculum.py`)**
+   - 숨기기 처리된 슬라이드 완벽 차단: `is_hidden` 속성을 XML 레벨에서 파악하여 불필요한 예비용/과거 장표를 분석에서 제외합니다.
    - 그룹화된 도형, 복잡한 표(Table) 안의 텍스트까지 재귀적으로(Recursive) 모두 추출합니다.
 
 3. **LLM 기반 Markdown 포맷팅 및 필터링**
